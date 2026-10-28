@@ -1,0 +1,1 @@
+(()=>{let initial=null;async function check(){try{const r=await fetch('revision.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(initial&&initial!==d.revision){location.reload();return;}initial=d.revision;}catch{}}check();setInterval(check,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)check();});})();
